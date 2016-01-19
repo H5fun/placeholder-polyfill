@@ -1,5 +1,5 @@
 # placeholder-polyfill
-a polyfill of placeholder property for IE8, IE9
+A polyfill of placeholder property for IE8, IE9
 
 ## Install
 ```
