@@ -1,0 +1,18 @@
+{
+  "name": "placeholder-polyfill",
+  "authors": [
+    "hooriza@gmail.com"
+  ],
+  "description": "a polyfill of placeholder property for IE8, IE9",
+  "main": "placeholder-polyfill.css",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

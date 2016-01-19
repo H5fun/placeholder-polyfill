@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>placeholder-polyfill</title>
+	<style>
+		* { font-family:나눔고딕; }
+	</style>
+	<link href="placeholder-polyfill.css" rel="stylesheet">
+</head>
+<body>
+	<div>
+		<div style="padding-left:20px; margin-left:30px; border:5px solid #00f;">
+			<input type="text" placeholder="input text input text input text input text input text input text input text input text" id="input">
+		</div>
+		<hr>
+		<input type="button" onclick="document.getElementById('input').placeholder = 'input here';" value="set placeholder">
+		<input type="button" onclick="document.getElementById('input').placeholder = '';" value="remove placeholder">
+		<hr>
+		<input type="button" onclick="document.getElementById('input').value = 'value';" value="set value">
+		<input type="button" onclick="document.getElementById('input').value = '';" value="remove value">
+	</div>
+	<input type="text" placeholder="input text input text input text input text input text input text input text" style="position:absolute; left:40px; top:120px;">
+	<input type="text" placeholder="input text input text input text input text input text input text input text input text input text input text" style="position:absolute; right:40px; top:150px; margin:10px; padding:20px;">
+	<textarea placeholder="input text input text input text input text input text input text input text input text input text" style="position:absolute; left:40px; top:230px; padding:10px; border:20px solid #888;"></textarea>
+</body>
+</html>

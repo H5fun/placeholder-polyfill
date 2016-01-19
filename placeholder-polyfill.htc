@@ -1,0 +1,84 @@
+<public:property name="placeholder" />
+<public:attach event="oncontentready" onevent="onContentReady()" />
+<public:attach event="onpropertychange" onevent="onPropertyChange()" />
+<public:attach event="onkeyup" onevent="onChange()" />
+<public:attach event="onchange" onevent="onChange()" />
+<public:attach event="onresize" onevent="onResize()" for="window" />
+<script language="javascript">
+
+	var input = element;
+	var span;
+
+	function onContentReady() {
+
+		if (input.type !== 'text' && input.type !== 'password' && input.type !== 'textarea') {
+			return;
+		}
+
+		span = document.createElement('div');
+		span.className = '-placeholder';
+		span.innerText = input.placeholder || input.getAttribute('placeholder') || '';
+
+		onResize();
+		onChange();
+
+		input.parentNode.insertBefore(span, input.nextSibling);
+
+		span.attachEvent('onclick', function(evt) {
+			input.focus();
+			evt.returnValue = false;
+		});
+
+	}
+
+	function onPropertyChange() {
+		if (!span) { return; }
+		if (event.propertyName === 'placeholder') {
+			span.innerText = input.placeholder || '';
+		} else if (event.propertyName === 'value') {
+			onChange();
+		}
+	}
+
+	function onResize() {
+		if (!span) { return; }
+
+		var rect = input.getBoundingClientRect();
+
+		var spanStyle = span.runtimeStyle;
+		var inputStyle = input.currentStyle;
+
+		var values = {
+			borderTop: parseInt(inputStyle.borderTopWidth, 10),
+			borderLeft: parseInt(inputStyle.borderLeftWidth, 10),
+			paddingTop: parseInt(inputStyle.paddingTop, 10),
+			paddingRight: parseInt(inputStyle.paddingRight, 10),
+			paddingBottom: parseInt(inputStyle.paddingBottom, 10),
+			paddingLeft: parseInt(inputStyle.paddingLeft, 10)
+		};
+
+		spanStyle.position = 'absolute';
+		spanStyle.overflow = 'hidden';
+
+		spanStyle.whiteSpace = input.type === 'textarea' ? 'pre-wrap' : 'nowrap';
+		spanStyle.left = input.offsetLeft + values.borderLeft + parseInt(inputStyle.paddingLeft, 10) + 'px';
+		spanStyle.top = input.offsetTop + values.borderTop + values.paddingTop + 'px';
+		spanStyle.width = input.clientWidth - values.paddingLeft - values.paddingRight + 'px';
+		spanStyle.height = input.clientHeight - values.paddingTop  + 'px';
+
+		var lists = 'fontSize,fontWeight,fontFamily,lineHeight'.split(',');
+		for (var i = 0, k; k = lists[i]; i++) {
+			spanStyle[k] = inputStyle[k];
+		}
+
+		span.style.color = inputStyle.color;
+		span.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity=70)';
+
+	}
+
+	function onChange() {
+		if (!span) { return; }
+		span.style.display = input.value ? 'none' : 'inline';
+	}
+
+</script>
