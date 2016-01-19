@@ -1,7 +1,0 @@
-input, textarea {
-	behavior: url("placeholder-polyfill.htc")\9;
-}
-
-.-placeholder {
-
-}

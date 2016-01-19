@@ -8,6 +8,8 @@ bower install https://github.com/hooriza/placeholder-polyfill.git
 
 ## Usage
 ```html
-<link href="/path/to/placeholder-polyfill.css" rel="stylesheet" />
+<style type="text/css">
+	input, textarea { behavior: url("/path/to/placeholder-polyfill.htc")\9; }
+</style>
 ```
 That's all.
