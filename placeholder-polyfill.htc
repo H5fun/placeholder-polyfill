@@ -68,7 +68,7 @@
 
 		var lists = 'fontSize,fontWeight,fontFamily,lineHeight'.split(',');
 		for (var i = 0, k; k = lists[i]; i++) {
-			spanStyle[k] = inputStyle[k];
+			span.style[k] = inputStyle[k];
 		}
 
 		span.style.color = inputStyle.color;
